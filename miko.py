@@ -4,3 +4,10 @@ horse
 rabbit
 snake
 bird
+sheep
+pig
+mouse
+cow
+fish
+lion
+tiger
