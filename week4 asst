@@ -1,0 +1,26 @@
+board = [
+    "......................",
+    "......##########......",
+    "......#........#......",
+    "......#........#......",
+    "......#........#####..",
+    "....###............#..",
+    "....#............###..",
+    "....##############....",
+]
+
+def flood_fill(input_board: List[str], old: str, new: str, a: int, b: int) -> List[str]:
+    def fill(a, b):
+        if 0 <= a < len(input_board) and 0 <= b < len(input_board[0]) and input_board[a][b] == old:
+            input_board[a] = input_board[a][:b] + new + input_board[a][b + 1:]
+            fill(a + 1, b)
+            fill(a, b + 1)
+            fill(a, b - 1)
+    fill(a, b)
+
+    return input_board
+
+modified_board = flood_fill(input_board=board, old=".", new="~", a=5, b=12)
+
+for row in modified_board:
+    print(row)
