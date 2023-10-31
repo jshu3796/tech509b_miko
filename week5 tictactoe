@@ -1,0 +1,27 @@
+board = [['O', 'X', 'X'],
+         ['X', 'X', 'O'],
+         ['O', 'X', 'X']]
+def winner(board):
+    for row in board:
+        if row[0]==row[1]==row[2]=='X':
+            return 'X won'
+        elif row[0]==row[1]==row[2]=='O':
+            return 'O won'
+
+    for a in range(len(board)):
+        if board[0][a]==board[1][a]==board[2][a] == 'X':
+            return 'X won'
+        elif board[0][a]==board[1][a]==board[2][a] == 'O':
+            return 'O won'
+
+    if all(board[i][i] == 'X' for i in range(3)) or all(board[i][2 - i] == 'X' for i in range(3)):
+        return 'X won'
+    elif all(board[i][i] == 'O' for i in range(3)) or all(board[i][2 - i] == 'O' for i in range(3)):
+        return 'O won'
+
+    if all(cell != '' for row in board for cell in row):
+        return 'Draw'
+
+    return None
+result = winner(board)
+print(result)
